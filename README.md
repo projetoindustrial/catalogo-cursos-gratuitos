@@ -23,4 +23,8 @@ Catálogo de cursos gratuitos e abertos, organizado em 6 blocos e 62 trilhas (13
 
 ## Licença
 
-(a definir)
+Este catálogo (a organização em blocos e trilhas, os textos e as páginas) está sob a licença **Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional (CC BY-SA 4.0)**: você pode copiar, adaptar e reutilizar, inclusive comercialmente, desde que dê crédito e distribua o resultado sob a mesma licença. Texto completo em [`LICENSE`](LICENSE) e em https://creativecommons.org/licenses/by-sa/4.0/deed.pt-br.
+
+**Como citar:** Catálogo de cursos gratuitos (catalogo_blocos v12, 21/09/2026), https://github.com/projetoindustrial/catalogo-cursos-gratuitos
+
+**O que a licença não cobre:** nomes, descrições e links dos cursos continuam pertencendo às instituições que os oferecem, e os dados de fontes como o Censo PNP 2023 seguem os termos de cada fonte.
