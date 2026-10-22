@@ -34,7 +34,7 @@ button.more{margin:10px 12px;padding:7px 12px;border:1px solid var(--bd);border-
 :root {
   --color-brand-deep: #08263d;
   --color-brand-petroleum: #0e5263;
-  --color-brand-cyan: #00a6a6;
+  --color-brand-cyan: #009f9f;
   --color-brand-cyan-muted: #e6f7f7;
   --color-surface-page: #f4f7fa;
   --color-surface-card: #ffffff;
@@ -55,8 +55,8 @@ button.more{margin:10px 12px;padding:7px 12px;border:1px solid var(--bd);border-
   --color-status-info-bg: #e8eef2;
   --color-border-default: #d0d9e0;
   --color-border-strong: #7d8f9e;
-  --color-border-focus: #00a6a6;
-  --color-focus-ring: 0 0 0 3px rgba(0, 166, 166, 0.35);
+  --color-border-focus: #0e5263;
+  --color-focus-ring: 0 0 0 2px #ffffff, 0 0 0 4px #0e5263;
   --bg:var(--color-surface-page);--fg:var(--color-text-primary);--mut:var(--color-text-secondary);--card:var(--color-surface-card);--bd:var(--color-border-default);--ac:var(--color-text-link);--ac2:var(--color-brand-cyan-muted);--warn:var(--color-status-warning);
 }
 @media (prefers-color-scheme: dark) {
@@ -85,7 +85,7 @@ button.more{margin:10px 12px;padding:7px 12px;border:1px solid var(--bd);border-
     --color-border-default: #243447;
     --color-border-strong: #5f7890;
     --color-border-focus: #00c4c4;
-    --color-focus-ring: 0 0 0 3px rgba(0, 196, 196, 0.4);
+    --color-focus-ring: 0 0 0 2px #0b1520, 0 0 0 4px #00c4c4;
     --bg:var(--color-surface-page);--fg:var(--color-text-primary);--mut:var(--color-text-secondary);--card:var(--color-surface-card);--bd:var(--color-border-default);--ac:var(--color-text-link);--ac2:var(--color-brand-cyan-muted);--warn:var(--color-status-warning);
   }
 }
@@ -114,10 +114,48 @@ button.more{margin:10px 12px;padding:7px 12px;border:1px solid var(--bd);border-
   --color-border-default: #243447;
   --color-border-strong: #5f7890;
   --color-border-focus: #00c4c4;
-  --color-focus-ring: 0 0 0 3px rgba(0, 196, 196, 0.4);
+  --color-focus-ring: 0 0 0 2px #0b1520, 0 0 0 4px #00c4c4;
   --bg:var(--color-surface-page);--fg:var(--color-text-primary);--mut:var(--color-text-secondary);--card:var(--color-surface-card);--bd:var(--color-border-default);--ac:var(--color-text-link);--ac2:var(--color-brand-cyan-muted);--warn:var(--color-status-warning);
 }
+/* DS v2.1: foco visível e alvos de toque >= 44px */
+:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: 2px; }
+@media (pointer: coarse) { button, select, summary, [role="button"], [role="tab"] { min-height: 44px; } }
 </style>
+<style id="ds-extra">
+/* DS v2.4: tokens extras e componentes StatusBadge/EmptyState (ver COMPONENTES.md). Remover este bloco desfaz. */
+:root{--control-height-sm:32px;--font-size-meta:0.8125rem;--font-size-caption:0.75rem;--font-weight-medium:500;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-6:1.5rem;--space-12:3rem;--radius-md:8px;--radius-lg:12px;--radius-full:9999px;--font-size-h3:1.0625rem;--font-size-body:0.9375rem;--font-size-label:0.75rem;--font-weight-semibold:600;--control-height-md:40px;--control-touch-min:44px;--shadow-focus:var(--color-focus-ring);--color-surface-hover:#e8eaeb;--color-status-caution:#b84f12;--color-status-caution-bg:#fbf4f1;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--color-surface-hover:#293746;--color-status-caution:#fa9364;--color-status-caution-bg:#31292b;}}
+:root[data-theme="dark"]{--color-surface-hover:#293746;--color-status-caution:#fa9364;--color-status-caution-bg:#31292b;}
+/* ---------- FilterChip ---------- */
+.ds-chip { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--control-height-sm); padding: 0 var(--space-3); border: 1px solid var(--color-border-strong); border-radius: var(--radius-full); background: var(--color-surface-card); color: var(--color-text-primary); font: inherit; font-size: var(--font-size-meta); font-weight: var(--font-weight-medium); cursor: pointer; transition: background-color .15s, border-color .15s; }
+.ds-chip:hover { background: var(--color-surface-hover); }
+.ds-chip[aria-pressed="true"] { background: var(--color-text-link); border-color: var(--color-text-link); color: var(--color-surface-card); font-weight: var(--font-weight-semibold); }
+.ds-chip__count { font-size: var(--font-size-caption); color: var(--color-text-secondary); }
+.ds-chip[aria-pressed="true"] .ds-chip__count { color: inherit; opacity: .85; }
+.ds-chip:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+@media (pointer: coarse) { .ds-chip { min-height: var(--control-touch-min); } }
+.ds-chip-group { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+/* ---------- StatusBadge (sempre com texto; a cor nunca é o único sinal) ---------- */
+.ds-badge { display: inline-flex; align-items: center; gap: var(--space-1); padding: 2px var(--space-2); border-radius: var(--radius-full); font-size: var(--font-size-label); font-weight: var(--font-weight-semibold); line-height: 1.4; white-space: nowrap; background: var(--color-surface-hover); color: var(--color-text-secondary); }
+.ds-badge::before { content: ""; width: .5em; height: .5em; border-radius: 50%; background: currentColor; flex: none; }
+.ds-badge--success { background: var(--color-status-success-bg); color: var(--color-status-success); }
+.ds-badge--warning { background: var(--color-status-warning-bg); color: var(--color-status-warning); }
+.ds-badge--caution { background: var(--color-status-caution-bg); color: var(--color-status-caution); }
+.ds-badge--danger  { background: var(--color-status-danger-bg);  color: var(--color-status-danger); }
+.ds-badge--info    { background: var(--color-status-info-bg);    color: var(--color-status-info); }
+
+/* ---------- EmptyState (explica e oferece o próximo passo) ---------- */
+.ds-empty { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-2); padding: var(--space-12) var(--space-6); border: 1px dashed var(--color-border-strong); border-radius: var(--radius-lg); background: var(--color-surface-card); color: var(--color-text-secondary); }
+.ds-empty__title { margin: 0; font-size: var(--font-size-h3); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.ds-empty__text { margin: 0; max-width: 46ch; font-size: var(--font-size-body); }
+.ds-empty__action { margin-top: var(--space-3); display: inline-flex; align-items: center; justify-content: center; min-height: var(--control-height-md); padding: 0 var(--space-4); border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); background: var(--color-surface-card); color: var(--color-text-link); font: inherit; font-weight: var(--font-weight-semibold); cursor: pointer; }
+.ds-empty__action:hover { background: var(--color-surface-hover); }
+.ds-empty__action:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+@media (pointer: coarse) { .ds-empty__action { min-height: var(--control-touch-min); } }
+li .ds-badge{margin-left:var(--space-2)}
+</style>
+
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Governo e Administração Pública">
@@ -133,7 +171,7 @@ button.more{margin:10px 12px;padding:7px 12px;border:1px solid var(--bd);border-
  <input id="q" type="search" aria-label="Buscar curso" placeholder="Buscar por nome do curso ou instituição">
  <select id="tr" class="wide" aria-label="Trilha"></select>
  <select id="nv" aria-label="Nível"><option value="">Todos os níveis</option></select>
- <label class="ck"><input id="hc" type="checkbox"> só com carga horária</label>
+ <button id="hc" class="ds-chip" type="button" aria-pressed="false">Só com carga horária</button>
 </div>
 <div id="out"></div>
 <p class="note">Sem teto de horas: todos os cursos gratuitos e abertos do bloco aparecem, curtos ou longos. Cursos restritos (exclusivos de servidor/colaborador) e pagos não entram. "Censo PNP 2023" indica oferta histórica dos Institutos Federais (2022–23), sem garantia de vaga aberta hoje. Trilhas A–K3 têm sequência curada; as demais (T…, D, K4) foram montadas por regras de palavra e estão em revisão. Fonte: catalogo_blocos v12 (2026-09-21).</p>
@@ -167,14 +205,16 @@ function trilhas(){
  D.trilhas.forEach(function(t){if(cnt[t.cod]||t.cod===F.tr)mk(t.cod,t.cod+' · '+t.nome+' ('+(cnt[t.cod]||0)+')');});
  trsel.value=F.tr;}
 function item(c){var li=el('li'),a=el('a',null,c[1]);if(c[5]){a.href=c[5];a.target='_blank';a.rel='noopener';}li.appendChild(a);
- if(c[8]==='referencia')li.appendChild(el('span','b','referência'));
- if(c[8]==='alternativa_idioma')li.appendChild(el('span','b','versão em outro idioma'));
- if(c[9]==='historico_pnp_2023')li.appendChild(el('span','b','censo PNP 2023'));
+ if(c[8]==='referencia')li.appendChild(el('span','ds-badge ds-badge--info','referência'));
+ if(c[8]==='alternativa_idioma')li.appendChild(el('span','ds-badge ds-badge--info','versão em outro idioma'));
+ if(c[9]==='historico_pnp_2023')li.appendChild(el('span','ds-badge','censo PNP 2023'));
  var m=[];if(c[2])m.push(c[2]);m.push(c[4]);if(c[3])m.push(Math.round(c[3])+' h');if(F.tr===''&&TR[c[6]])m.push('trilha '+c[6]);
  li.appendChild(el('div','meta',m.join(' · ')));return li;}
+function vazio(out,reset){var d=el('div','ds-empty'),t=el('h3','ds-empty__title','Nenhum curso encontrado'),p=el('p','ds-empty__text','Nenhum curso bate com os filtros atuais. Remova um filtro ou busque por outro termo.'),b=el('button','ds-empty__action','Limpar filtros');b.type='button';b.onclick=reset;d.appendChild(t);d.appendChild(p);d.appendChild(b);out.appendChild(d);}
+function limpar(){F.q='';F.nv='';F.hc=false;F.tr='';document.getElementById('q').value='';sel.value='';document.getElementById('hc').setAttribute('aria-pressed','false');LIM=40;render();}
 function render(){trilhas();var out=document.getElementById('out');out.innerHTML='';
  var ids=[];for(var i=0;i<C.length;i++)if(match(i))ids.push(i);
- if(!ids.length){out.appendChild(el('p','sub','Nenhum curso com esses filtros.'));return;}
+ if(!ids.length){vazio(out,limpar);return;}
  if(F.tr){var t=TR[F.tr];out.appendChild(el('h2','tt',t.cod+' · '+t.nome));out.appendChild(el('p','tsub',t.situacao));
   var by={};ids.forEach(function(i){var k=C[i][7];(by[k]=by[k]||[]).push(i);});
   t.mods.forEach(function(m){var l=by[m[0]];if(!l)return;
@@ -190,7 +230,7 @@ function render(){trilhas();var out=document.getElementById('out');out.innerHTML
 document.getElementById('q').oninput=function(e){F.q=e.target.value;LIM=40;render();};
 trsel.onchange=function(e){F.tr=e.target.value;LIM=40;render();};
 sel.onchange=function(e){F.nv=e.target.value;LIM=40;render();};
-document.getElementById('hc').onchange=function(e){F.hc=e.target.checked;LIM=40;render();};
+document.getElementById('hc').onclick=function(){F.hc=!F.hc;this.setAttribute('aria-pressed',F.hc?'true':'false');LIM=40;render();};
 render();
 })();
 </script></body></html>

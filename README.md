@@ -1,6 +1,6 @@
 # catalogo-cursos-gratuitos
 
-Catálogo de cursos gratuitos e abertos, organizado em 6 blocos e 62 trilhas (13.395 cursos), com busca em todos os blocos.
+Catálogo de cursos gratuitos e abertos, organizado em 6 blocos e 62 trilhas (13.395 registros: 4.808 ofertas atuais + 8.587 do censo de oferta PNP 2023, histórico, todos no bloco Educação Profissional e Tecnológica), com busca em todos os blocos.
 
 **Site:** https://projetoindustrial.github.io/catalogo-cursos-gratuitos/
 
