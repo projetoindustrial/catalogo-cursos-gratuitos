@@ -1,0 +1,14 @@
+# Catálogo de cursos gratuitos
+
+> 13.395 registros de cursos gratuitos em 6 blocos e 62 trilhas (4.808 ofertas atuais e 8.587 do censo PNP 2023, histórico). Blocos: Saúde (279 cursos); Empreendedorismo e Gestão (448 cursos); Governo e Administração Pública (1020 cursos); Educação Superior e Extensão (120 cursos); Educação Profissional e Tecnológica (9992 cursos); Treinamento Corporativo e Setorial (1536 cursos).
+
+## Páginas
+- [Trilhas](https://projetoindustrial.github.io/catalogo-cursos-gratuitos/trilhas/)
+- [Busca interativa](https://projetoindustrial.github.io/catalogo-cursos-gratuitos/hub.html)
+
+## Dados
+- [CSV](https://projetoindustrial.github.io/catalogo-cursos-gratuitos/dados/cursos.csv)
+- [JSONL](https://projetoindustrial.github.io/catalogo-cursos-gratuitos/dados/cursos.jsonl)
+
+## Aviso
+Ofertas atuais e censo PNP 2023 (histórico) são recortes diferentes; o Portal Rede Federal usa outro recorte. Confirme na página do curso.
